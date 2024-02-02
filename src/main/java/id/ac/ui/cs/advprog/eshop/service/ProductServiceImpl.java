@@ -14,8 +14,12 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     private ProductRepository productRepository;
 
+    private int id = 0;
+
     @Override
     public Product create(Product product) {
+        product.setProductId(Integer.toString(++id));
+
         productRepository.create(product);
         return product;
     }
