@@ -9,7 +9,7 @@ public interface ProductService {
 
     public boolean delete(String id);
 
-    public Product edit(int id, Product product);
+    public Product edit(String id, Product product);
 
     public Product get(String id);
 

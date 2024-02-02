@@ -15,8 +15,6 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     private ProductRepository productRepository;
 
-    private int id = 0;
-
     @Override
     public Product create(Product product) {
         product.setProductId(String.valueOf(UUID.randomUUID()));
@@ -33,13 +31,13 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product edit(int id, Product product) {
+    public Product edit(String id, Product product) {
         Iterator<Product> products = productRepository.findAll();
 
         int index = 0;
         for (; products.hasNext(); index++) {
             Product currentProduct = products.next();
-            if (currentProduct.getProductId().equals(Integer.toString(id))) {
+            if (currentProduct.getProductId().equals(id)) {
                 product.setProductId(currentProduct.getProductId());
                 break;
             }
@@ -58,6 +56,7 @@ public class ProductServiceImpl implements ProductService {
                 return currentProduct;
             }
         }
+        return null;
     }
 
     @Override
