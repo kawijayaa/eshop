@@ -26,7 +26,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public boolean delete(int id) {
+    public boolean delete(String id) {
         Product product = get(id);
 
         return product != null && productRepository.delete(product);
@@ -49,20 +49,15 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product get(int id) {
-        Product product = null;
-
+    public Product get(String id) {
         Iterator<Product> products = productRepository.findAll();
 
         while (products.hasNext()) {
-            Product current_product = products.next();
-            if (current_product.getProductId().equals(Integer.toString(id))) {
-                product = current_product;
-                break;
+            Product currentProduct = products.next();
+            if (currentProduct.getProductId().equals(id)) {
+                return currentProduct;
             }
         }
-
-        return product;
     }
 
     @Override

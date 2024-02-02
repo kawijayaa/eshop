@@ -7,11 +7,11 @@ import java.util.List;
 public interface ProductService {
     public Product create(Product product);
 
-    public boolean delete(int id);
+    public boolean delete(String id);
 
     public Product edit(int id, Product product);
 
-    public Product get(int id);
+    public Product get(String id);
 
     public List<Product> findAll();
 }
