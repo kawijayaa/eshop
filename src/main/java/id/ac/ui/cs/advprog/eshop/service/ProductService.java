@@ -9,5 +9,7 @@ public interface ProductService {
 
     public boolean delete(int id);
 
+    public Product get(int id);
+
     public List<Product> findAll();
 }
