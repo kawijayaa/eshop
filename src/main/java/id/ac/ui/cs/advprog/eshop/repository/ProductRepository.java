@@ -20,6 +20,10 @@ public class ProductRepository {
         return productData.remove(product);
     }
 
+    public Product replace(int index, Product product) {
+        return productData.set(index, product);
+    }
+
     public Iterator<Product> findAll() {
         return productData.iterator();
     }
