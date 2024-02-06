@@ -106,4 +106,49 @@ class ProductRepositoryTest {
 
         assertFalse(productIterator.hasNext());
     }
+
+    @Test
+    void testEditProduct() {
+        Product product1 = new Product();
+        product1.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
+        product1.setProductName("Sampo Cap Bambang");
+        product1.setProductQuantity(100);
+        productRepository.create(product1);
+
+        Product product2 = new Product();
+        product2.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
+        product2.setProductName("Sampo Cap Usep");
+        product2.setProductQuantity(50);
+
+        Iterator<Product> productIterator = productRepository.findAll();
+        productRepository.edit(product1.getProductId(), product2);
+
+        Product savedProduct = productIterator.next();
+        assertEquals(savedProduct.getProductId(), product1.getProductId());
+        assertEquals(savedProduct.getProductId(), product2.getProductId());
+        assertEquals(savedProduct.getProductName(), product2.getProductName());
+        assertEquals(savedProduct.getProductQuantity(), product2.getProductQuantity());
+    }
+
+    @Test
+    void testEditProductNoId() {
+        Product product1 = new Product();
+        product1.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
+        product1.setProductName("Sampo Cap Bambang");
+        product1.setProductQuantity(100);
+        productRepository.create(product1);
+
+        Product product2 = new Product();
+        product2.setProductName("Sampo Cap Usep");
+        product2.setProductQuantity(50);
+
+        Iterator<Product> productIterator = productRepository.findAll();
+        productRepository.edit(product1.getProductId(), product2);
+
+        Product savedProduct = productIterator.next();
+        assertEquals(savedProduct.getProductId(), product1.getProductId());
+        assertEquals(savedProduct.getProductId(), product2.getProductId());
+        assertEquals(savedProduct.getProductName(), product2.getProductName());
+        assertEquals(savedProduct.getProductQuantity(), product2.getProductQuantity());
+    }
 }
