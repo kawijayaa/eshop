@@ -80,7 +80,7 @@ class ProductRepositoryTest {
         productRepository.delete(product1);
 
         Iterator<Product> productIterator = productRepository.findAll();
-        assertTrue(productIterator.hasNext());
+        assertFalse(productIterator.hasNext());
     }
 
     @Test
@@ -97,8 +97,9 @@ class ProductRepositoryTest {
         product2.setProductQuantity(50);
         productRepository.create(product2);
 
-        Iterator<Product> productIterator = productRepository.findAll();
         productRepository.delete(product1);
+        
+        Iterator<Product> productIterator = productRepository.findAll();
         assertTrue(productIterator.hasNext());
 
         Product savedProduct = productIterator.next();
