@@ -11,7 +11,5 @@ public interface ProductService {
 
     public Product edit(String id, Product product);
 
-    public Product get(String id);
-
     public List<Product> findAll();
 }
