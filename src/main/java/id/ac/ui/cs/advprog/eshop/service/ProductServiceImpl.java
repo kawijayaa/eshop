@@ -32,18 +32,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product edit(String id, Product product) {
-        Iterator<Product> products = productRepository.findAll();
-
-        int index = 0;
-        for (; products.hasNext(); index++) {
-            Product currentProduct = products.next();
-            if (currentProduct.getProductId().equals(id)) {
-                product.setProductId(currentProduct.getProductId());
-                break;
-            }
-        }
-
-        return productRepository.replace(index, product);
+        return productRepository.edit(id, product);
     }
 
     @Override
