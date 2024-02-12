@@ -27,12 +27,11 @@ public class ProductRepository {
             Product currentProduct = products.next();
             if (currentProduct.getProductId().equals(id)) {
                 product.setProductId(currentProduct.getProductId());
-                break;
+                return productData.set(index, product);
             }
         }
 
-        return productData.set(index, product);
-
+        return null;
     }
 
     public Product get(String id) {
