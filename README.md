@@ -1,5 +1,7 @@
 # Eshop (Tutorial)
 
+[Deployed App](https://eshop-muhammadoka.koyeb.app/)
+
 ## Reflection 1 - Module 1
 I think my code is sufficiently clean and secure. For clean code practices, I used descriptive names for variables and method/functions. And also I structure my code so that it is self-documenting.
 For secure code practices, I implemented the product ID using UUID so that it cannot be enumerated.
