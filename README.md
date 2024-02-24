@@ -28,6 +28,8 @@ I need to improve my commit messages, since some of them are not very descriptiv
 said that a superclass should be able to substitute for a subclass without breaking functionality. The Open-Closed Principle said that a software
 entity should be open to development/extension by other developers, but not open to modification of the actual source code. The Dependency Inversion
 Principle said that high-level modules should depend on abstractions of the low-level modules, not the concrete implementation of the low-level modules.
+The rest of the SOLID principles (SRP, ISP) in my opinion are already implemented. An example of the SRP implementation is separating Car and Product 
+modules (repositories, services, controllers). An example of the ISP implementation is limiting interfaces to their basic functionality (CRUD).
 
 2. One of the advantages of SOLID principles is they make sure the code that we write can be developed further by other developers. Since
 I refactored the repository to use interfaces, other developers can add new repository implementations such as using a database for the
