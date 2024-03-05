@@ -1,5 +1,6 @@
 package id.ac.ui.cs.advprog.eshop.model;
 
+import id.ac.ui.cs.advprog.eshop.enums.PaymentStatus;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -16,10 +17,10 @@ class PaymentTest {
         paymentData.put("referenceCode", "ADV001");
 
         Payment payment = new Payment("dd75548a-fade-49f8-8f1b-234a983db403", "Bank Transfer",
-                "SUCCESS", paymentData);
+                PaymentStatus.SUCCESS.getValue(), paymentData);
         assertEquals("dd75548a-fade-49f8-8f1b-234a983db403", payment.getId());
         assertEquals("Bank Transfer", payment.getMethod());
-        assertEquals("SUCCESS", payment.getStatus());
+        assertEquals(PaymentStatus.SUCCESS.getValue(), payment.getStatus());
         assertNotNull(payment.getPaymentData());
 
         Map<String, String> resultPaymentData = payment.getPaymentData();
@@ -47,7 +48,7 @@ class PaymentTest {
 
         assertThrows(IllegalArgumentException.class, () -> {
             Payment payment = new Payment("dd75548a-fade-49f8-8f1b-234a983db403", "Bank Transfer",
-                    "SUCCESS", paymentData);
+                    PaymentStatus.SUCCESS.getValue(), paymentData);
         });
     }
 
@@ -58,9 +59,9 @@ class PaymentTest {
         paymentData.put("referenceCode", "ADV001");
 
         Payment payment = new Payment("dd75548a-fade-49f8-8f1b-234a983db403", "Bank Transfer",
-                "SUCCESS", paymentData);
+                PaymentStatus.SUCCESS.getValue(), paymentData);
         payment.setStatus("REJECTED");
-        assertEquals("REJECTED", payment.getStatus());
+        assertEquals(PaymentStatus.REJECTED.getValue(), payment.getStatus());
     }
 
     @Test
@@ -70,7 +71,7 @@ class PaymentTest {
         paymentData.put("referenceCode", "ADV001");
 
         Payment payment = new Payment("dd75548a-fade-49f8-8f1b-234a983db403", "Bank Transfer",
-                "SUCCESS", paymentData);
+                PaymentStatus.SUCCESS.getValue(), paymentData);
         assertThrows(IllegalArgumentException.class, () -> payment.setStatus("ZCZC"));
     }
 }
