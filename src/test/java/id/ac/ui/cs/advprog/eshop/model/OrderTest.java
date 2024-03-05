@@ -45,7 +45,7 @@ public class OrderTest {
                 this.products, 1708560000L, "Safira Sudrajat");
 
         assertEquals(this.products, order.getProducts());
-        assertEquals(2, order.getProducts.size());
+        assertEquals(2, order.getProducts().size());
         assertEquals("Sampo Cap Bambang", order.getProducts().get(0).getProductName());
         assertEquals("Sampo Cap Usep", order.getProducts().get(1).getProductName());
 
