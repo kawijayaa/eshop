@@ -42,7 +42,7 @@ class OrderServiceTest {
 
     @Test
     void testCreateOrder() {
-        Order order = orderes.get(1);
+        Order order = orders.get(1);
         doReturn(order).when(orderRepository).save(order);
 
         Order result = orderService.createOrder(order);
@@ -82,7 +82,7 @@ class OrderServiceTest {
         assertThrows(IllegalArgumentException.class,
                 () -> orderService.updateStatus(order.getId(), "MEOW"));
 
-        verify(orderRepository, times(0)).save(Order.class);
+        verify(orderRepository, times(0)).save(any(Order.class));
     }
 
     @Test
