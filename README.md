@@ -42,4 +42,6 @@ which violates the Open-Closed Principle then it can only support UUID and not o
 1. Is TDD useful? Yes, TDD is useful because it forces you to think about the requirements of the code before writing the code. 
 It also forces you to write tests for the code before writing the code. This makes sure that the code is tested and the requirements are met.
 
-2. Yes, my tests are fast, independent, repeatable, self-validating and timely. 
+2. Yes, my tests are fast, independent, repeatable, self-validating and timely. They are fast because they are unit tests and not integration tests. 
+They are independent because they don't rely on other tests to pass. They are repeatable because they can be run multiple times and still produce the same result. 
+They are self-validating because they can be run without human intervention. They are timely because I used TDD, so it is written before the code.
