@@ -1,5 +1,6 @@
 package id.ac.ui.cs.advprog.eshop.service;
 
+import id.ac.ui.cs.advprog.eshop.enums.PaymentMethod;
 import id.ac.ui.cs.advprog.eshop.enums.PaymentStatus;
 import id.ac.ui.cs.advprog.eshop.model.Order;
 import id.ac.ui.cs.advprog.eshop.model.Payment;
@@ -20,9 +21,8 @@ public class PaymentServiceImpl implements PaymentService {
 
     @Override
     public Payment addPayment(Order order, String method, Map<String, String> paymentData) {
-        String[] paymentMethods = {"VOUCHER_CODE", "BANK_TRANSFER"};
         String status = PaymentStatus.SUCCESS.getValue();
-        if (Arrays.stream(paymentMethods).noneMatch(item -> (item.equals(method)))) {
+        if (!PaymentMethod.contains(method)) {
             throw new IllegalArgumentException();
         }
         if (method.equals("VOUCHER_CODE") && !isValidVoucher(paymentData.get("voucherCode"))) {
