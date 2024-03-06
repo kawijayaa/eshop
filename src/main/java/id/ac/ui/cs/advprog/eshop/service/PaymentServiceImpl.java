@@ -21,15 +21,15 @@ public class PaymentServiceImpl implements PaymentService {
     @Override
     public Payment addPayment(Order order, String method, Map<String, String> paymentData) {
         String[] paymentMethods = {"VOUCHER_CODE", "BANK_TRANSFER"};
-        String status = "SUCCESS";
+        String status = PaymentStatus.SUCCESS.getValue();
         if (Arrays.stream(paymentMethods).noneMatch(item -> (item.equals(method)))) {
             throw new IllegalArgumentException();
         }
         if (method.equals("VOUCHER_CODE") && !isValidVoucher(paymentData.get("voucherCode"))) {
-            status = "FAILED";
+            status = PaymentStatus.FAILED.getValue();
         }
         if (method.equals("BANK_TRANSFER") && (paymentData.get("bankName") == null || paymentData.get("referenceCode") == null)) {
-            status = "FAILED";
+            status = PaymentStatus.FAILED.getValue();
         }
 
         Payment payment = new Payment(order.getId(), method, status, paymentData);

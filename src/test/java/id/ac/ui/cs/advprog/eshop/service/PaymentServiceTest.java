@@ -1,5 +1,6 @@
 package id.ac.ui.cs.advprog.eshop.service;
 
+import id.ac.ui.cs.advprog.eshop.enums.PaymentStatus;
 import id.ac.ui.cs.advprog.eshop.model.Order;
 import id.ac.ui.cs.advprog.eshop.model.Payment;
 import id.ac.ui.cs.advprog.eshop.model.Product;
@@ -50,14 +51,14 @@ class PaymentServiceTest {
         Map<String, String> paymentData1 = new HashMap<>();
         paymentData1.put("voucherCode", "ESHOP1234ABC5678");
         Payment payment1 = new Payment("c4b28272-9fe1-4f8c-9c88-da69fb7ae6eb", "VOUCHER_CODE",
-                "SUCCESS", paymentData1);
+                PaymentStatus.SUCCESS.getValue(), paymentData1);
         payments.add(payment1);
 
         Map<String, String> paymentData2 = new HashMap<>();
         paymentData2.put("bankName", "Bank Independen");
         paymentData2.put("referenceCode", "ADV001");
         Payment payment2 = new Payment("6789d762-91a3-4560-875b-16fa1937db09", "BANK_TRANSFER",
-                "SUCCESS", paymentData2);
+                PaymentStatus.SUCCESS.getValue(), paymentData2);
         payments.add(payment2);
     }
 
@@ -100,7 +101,7 @@ class PaymentServiceTest {
         invalidPaymentData.put("voucherCode", "ESHOPABCDEF1234");
 
         Payment result = paymentService.addPayment(orders.getFirst(), "VOUCHER_CODE", invalidPaymentData);
-        assertEquals("FAILED", result.getStatus());
+        assertEquals(PaymentStatus.FAILED.getValue(), result.getStatus());
     }
 
     @Test
@@ -115,9 +116,9 @@ class PaymentServiceTest {
         Payment payment = payments.getFirst();
         doReturn(orders.getFirst()).when(orderRepository).findById(payment.getId());
 
-        Payment result = paymentService.setStatus(payment, "SUCCESS");
-        assertEquals("SUCCESS", result.getStatus());
-        assertEquals("SUCCESS", orders.getFirst().getStatus());
+        Payment result = paymentService.setStatus(payment, PaymentStatus.SUCCESS.getValue());
+        assertEquals(PaymentStatus.SUCCESS.getValue(), result.getStatus());
+        assertEquals(PaymentStatus.SUCCESS.getValue(), orders.getFirst().getStatus());
     }
 
     @Test
