@@ -37,3 +37,9 @@ repository
 
 3. When not applying SOLID principles, it can be hard to use and develop other developers' code. For example if I always force set a UUID to every product,
 which violates the Open-Closed Principle then it can only support UUID and not other ID types such as sequential integer ID.
+
+## Reflection - Module 4
+1. Is TDD useful? Yes, TDD is useful because it forces you to think about the requirements of the code before writing the code. 
+It also forces you to write tests for the code before writing the code. This makes sure that the code is tested and the requirements are met.
+
+2. Yes, my tests are fast, independent, repeatable, self-validating and timely. 
