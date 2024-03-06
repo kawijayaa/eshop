@@ -60,8 +60,8 @@ class PaymentTest {
 
         Payment payment = new Payment("dd75548a-fade-49f8-8f1b-234a983db403", "Bank Transfer",
                 PaymentStatus.SUCCESS.getValue(), paymentData);
-        payment.setStatus("REJECTED");
-        assertEquals(PaymentStatus.REJECTED.getValue(), payment.getStatus());
+        payment.setStatus("FAILED");
+        assertEquals(PaymentStatus.FAILED.getValue(), payment.getStatus());
     }
 
     @Test
